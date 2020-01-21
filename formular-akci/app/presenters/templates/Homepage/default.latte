@@ -1,0 +1,20 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+{if $user->isLoggedIn()}
+    <h2>Seznam akcí</h2>
+       {foreach $data as $row}
+            <div>
+                <h3><a n:href="Homepage:view $row->id">{$row->nazev|upper}</a></h3>
+                <p>vedoucí akce: {$row->ref('users', 'ucitel')->username}</p>
+                <p>typ: {$row->ref('typ', 'typ')->typ}</p>
+                <p>počet žáků: {$row->zaci}</p>
+            </div>    
+       {/foreach}    
+       {else}
+       <div class= "text-center">
+    	<h1 >Je nutné se prvně přihlásit</h1>
+    	<a n:href="Sign:in" class="btn btn-info">přihlásit</a>
+       </div>
+    {/if}
+{/block}

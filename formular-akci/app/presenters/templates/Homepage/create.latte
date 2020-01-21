@@ -1,0 +1,49 @@
+{* Latte template *}
+
+{block content}
+{if $user->isLoggedIn()}
+
+<h2>Vložení nové akce</h2>
+
+{block scripts}
+    {include parent}
+    <script src="{$basePath}/tinymce/tinymce.min.js"></script>
+<script>
+        $(function() {            
+     
+        tinymce.init({
+            language : "cs_CZ",
+            mode: "specific_textareas",
+           // editor_selector: "mceEditor",
+           selector:'textarea',
+            height: 500,
+            theme: 'silver',
+            plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+            ],
+            toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            toolbar2: 'print preview media | forecolor backcolor emoticons',
+            image_advtab: true,
+            templates: [
+                { title: 'Test template 1', content: 'Test 1' },
+                { title: 'Test template 2', content: 'Test 2' }
+            ],
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css'
+            ]}
+         );
+ })
+    </script> 
+    {/block}
+{control akceForm}
+{else}
+       <div class= "text-center">
+        <h1 >Je nutné se prvně přihlásit</h1>
+        <a n:href="Sign:in" class="btn btn-info">přihlásit</a>
+       </div>
+{/if}
+

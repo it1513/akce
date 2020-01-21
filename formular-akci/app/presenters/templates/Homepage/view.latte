@@ -1,0 +1,17 @@
+{* Latte template *}
+{block content}
+<h2>{$data->nazev}</h2>
+<h3>učitel: {$data->ref('users', 'ucitel')->username}</h3>
+<ul>
+    <li>datum: <b>{$data->datum}</b></li>
+    <li>typ: <b>{$data->ref('typ', 'typ')->typ}</b></li>
+    <li>počet žáků: <b>{$data->zaci}</b></li>
+    <li>popis akce: <b>{$data->popis}</b></li>
+    <li>DVPP: <b>{$data->dvpp}</b></li>
+    <li>MŠMT: <b>{$data->msmt}</b></li>
+    <li>pořadatel: <b>{$data->poradatel}</b></li>
+    <li>Počet výukových hodin: <b>{$data->vyukove_hodiny}</b></li>
+</ul>    
+<a class="button" n:href="Homepage:update $data->id">upravit</a>
+
+<p><a n:href="Homepage:default">Zpět na hlavní stránku</a></p>
